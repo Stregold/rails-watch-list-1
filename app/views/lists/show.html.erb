@@ -19,25 +19,30 @@
   </div>
 </div>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.pinimg.com/736x/4b/ed/36/4bed369e3d0341b40dbb46d7b97076e2.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),  url('<%= cl_image_path @list.photo.key, height: 300, crop: :fit %>')">
   <div class="container">
-    <h2><%= @list.name %></h2>
+    <h1><%= @list.name %></h1>
   </div>
 </div>
+<div class="container">
+  <ul class="list-group">
+    <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-product">
+    <div class="card-product-infos">
+      <h3><%= bookmark.movie.title %></h3>
+      <p><%= bookmark.movie.overview %></p>
+      <p> RATING  <%= bookmark.movie.rating %> </p>
+      <h2><%= bookmark.comment %></h2>
+    </div>
+  </div>
 
-<ul class="list-group">
-  <% @list.bookmarks.each do |bookmark| %>
-    <%= bookmark.movie.title %> - rating : <%= bookmark.movie.rating %>
-    - description : <%= bookmark.movie.overview %>
-    <li class="list-group-item">
-    <%= bookmark.comment %>
-    </li>
-    <%= link_to "delete",
-                  bookmark_path(bookmark),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-  <% end %>
-</ul>
 
+      <%= link_to "delete",
+                    bookmark_path(bookmark),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </ul>
+</div>
 <%= link_to 'Back', lists_path %> |
 <%= link_to 'add a new movie', new_list_bookmark_path(@list) %>
