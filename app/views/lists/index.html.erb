@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" href="http://localhost:3000/lists">
+  <a class="navbar-brand" href="<%= lists_path %>">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXCI1WpcRhanpmWu9HyiAKNFvLH-NIbuXXpyuuHH1FUdAp2SG5--_pOnoiMz9klyOQdjA&usqp=CAU" />
 </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,10 +10,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">My lists</a>
+        <a class="nav-link" href="<%= lists_path %>">My lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="http://localhost:3000/lists/new">New lists</a>
+        <a class="nav-link" href="<%= new_list_path %>">New lists</a>
       </li>
     </ul>
   </div>
