@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" href="http://localhost:3000/lists">
+  <a class="navbar-brand" href="<%= lists_path %>">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXCI1WpcRhanpmWu9HyiAKNFvLH-NIbuXXpyuuHH1FUdAp2SG5--_pOnoiMz9klyOQdjA&usqp=CAU" />
 </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,10 +10,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="http://localhost:3000/lists">My lists</a>
+        <a class="nav-link" href="<%= lists_path %>">My lists</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">New lists</a>
+        <a class="nav-link" href="<%= new_list_path %>">New lists</a>
       </li>
     </ul>
   </div>
@@ -28,21 +28,20 @@
   <ul class="list-group">
     <% @list.bookmarks.each do |bookmark| %>
     <div class="card-product">
-    <div class="card-product-infos">
-      <h3><%= bookmark.movie.title %></h3>
-      <p><%= bookmark.movie.overview %></p>
-      <p> RATING  <%= bookmark.movie.rating %> </p>
-      <h2><%= bookmark.comment %></h2>
+      <div class="card-product-infos">
+        <h3><%= bookmark.movie.title %></h3>
+        <p><%= bookmark.movie.overview %></p>
+        <p> RATING  <%= bookmark.movie.rating %> </p>
+        <h2><%= bookmark.comment %></h2>
+      </div>
     </div>
-  </div>
-
-
-      <%= link_to "delete",
-                    bookmark_path(bookmark),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
+  <%= link_to "delete",
+     bookmark_path(bookmark),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
     <% end %>
   </ul>
+
+  <%= link_to 'Back', lists_path %> |
+  <%= link_to 'add a new movie', new_list_bookmark_path(@list) %>
 </div>
-<%= link_to 'Back', lists_path %> |
-<%= link_to 'add a new movie', new_list_bookmark_path(@list) %>
